@@ -6,9 +6,9 @@ app = Flask(__name__)
 @app.route("/")
 def home():
     profile = {
-        "name": "Alex Carter",
-        "title": "Senior Data Engineer",
-        "location": "Seattle, WA",
+        "name": "Denis Almandoz",
+        "title": "Data Engineer",
+        "location": "Brno, Czech Republic",
         "tagline": "Building reliable data platforms that power analytics, AI, and product growth.",
         "email": "alex.carter@email.com",
         "linkedin": "https://www.linkedin.com/in/alexcarter",
