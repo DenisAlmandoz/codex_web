@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ profile.name }} | {{ profile.title }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <div class="logo">{{ profile.name }}</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact" class="button">Let’s talk</a>
+      </div>
+    </nav>
+    <div class="hero-content">
+      <div>
+        <p class="eyebrow">{{ profile.location }}</p>
+        <h1>Senior Data Engineer crafting trusted data experiences.</h1>
+        <p class="subhead">{{ profile.tagline }}</p>
+        <div class="cta-row">
+          <a class="button" href="#contact">Schedule a chat</a>
+          <a class="ghost" href="{{ profile.github }}" target="_blank" rel="noopener">View GitHub</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <h3>Impact Snapshot</h3>
+        <ul>
+          {% for item in highlights %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section about">
+      <div class="section-header">
+        <h2>About</h2>
+        <p>Data platforms that scale are built on clarity, automation, and empathy.</p>
+      </div>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Strategic Partner</h3>
+          <p>
+            I collaborate with executives, product, and analytics teams to design data
+            platforms that unlock measurable business impact.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Modern Architecture</h3>
+          <p>
+            From lakehouse patterns to real-time streaming, I blend reliability and
+            speed to deliver trusted data products.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Team Enablement</h3>
+          <p>
+            I build guardrails and mentorship programs that elevate data quality and
+            accelerate engineering throughput.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section skills">
+      <div class="section-header">
+        <h2>Technical Skills</h2>
+        <p>A balanced toolkit to deliver reliable pipelines and analytics-ready data.</p>
+      </div>
+      <div class="pill-grid">
+        {% for skill in skills %}
+        <span>{{ skill }}</span>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="experience" class="section experience">
+      <div class="section-header">
+        <h2>Experience</h2>
+        <p>Delivering platforms that scale across data, ML, and product organizations.</p>
+      </div>
+      <div class="timeline">
+        {% for role in experience %}
+        <article class="timeline-item">
+          <div>
+            <h3>{{ role.role }}</h3>
+            <p class="meta">{{ role.company }} • {{ role.time }}</p>
+          </div>
+          <ul>
+            {% for detail in role.details %}
+            <li>{{ detail }}</li>
+            {% endfor %}
+          </ul>
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="section-header">
+        <h2>Signature Projects</h2>
+        <p>Selected initiatives that highlight leadership, automation, and business impact.</p>
+      </div>
+      <div class="card-grid">
+        {% for project in projects %}
+        <div class="card">
+          <h3>{{ project.name }}</h3>
+          <p>{{ project.summary }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="contact-card">
+        <div>
+          <h2>Let’s build something durable.</h2>
+          <p>Open to leadership roles, platform advisory, and data modernization projects.</p>
+        </div>
+        <div class="contact-actions">
+          <a class="button" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+          <a class="ghost" href="{{ profile.linkedin }}" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 {{ profile.name }}. Designed for data-driven impact.</p>
+  </footer>
+</body>
+</html>
